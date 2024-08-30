@@ -1,0 +1,198 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Jalnan', sans-serif;
+    background-color: #f4f4f4;
+    font-size: 20px;
+    /* Base font size */
+    background-image: url('/hospitalImg/bg2.png');
+    /* Background image */
+    background-size: cover;
+    /* Ensure background image covers the entire area */
+    background-position: center;
+}
+
+@font-face {
+    font-family: 'Jalnan';
+    src: url('/font/JalnanGothicTTF.ttf') format('truetype');
+}
+
+.hospital-container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* White background with transparency */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    /* Padding adjustment */
+    max-width: 90%;
+    /* Maximum width adjustment */
+    width: 600px;
+    min-height: 90vh;
+    /* Minimum height setting */
+    display: flex;
+    flex-direction: column;
+    /* Arrange children vertically */
+    position: relative;
+}
+
+.head-button {
+    position: absolute;
+    top: 27px;
+    /* Button position adjustment */
+    left: 0px;
+}
+
+header h1 {
+    font-size: 36px;
+    /* Title font size adjustment */
+    /* margin: 20px 0 30px 0; */
+    margin-top: 20px;
+}
+
+header h2 {
+    font-size: 30px;
+    /* Subtitle font size adjustment */
+    margin: 10px;
+}
+
+header h3 {
+    /* Description text font size adjustment */
+    margin-top: -20px;
+    color: #302525;
+    line-height: 35px;
+}
+
+header h2 {
+    color: rgb(126, 106, 255);
+    margin-top: 20px;
+    text-shadow: 3px 3px 5px rgba(255, 253, 253, 0.3);
+    /* Add text shadow */
+}
+
+.box {
+    padding: 30px;
+    width: 90%;
+    height: 150px;
+    background-color: white;
+    border-radius: 10px;
+    align-items: center;
+    /* text-align: center; */
+}
+
+.options {
+    display: flex;
+    justify-content: space-around;
+    gap: 0px;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    /* Fill remaining space */
+}
+
+.option {
+    background-color: #5b98ce6e;
+    border-radius: 8px;
+    padding: 40px;
+    width: 180px;
+    /* Button width adjustment */
+    height: 180px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s;
+    margin-top: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center items vertically */
+}
+
+.option:hover {
+    transform: scale(1.1);
+}
+
+.option img {
+    width: 100px;
+    /* Increase icon size */
+    height: 100px;
+    margin-bottom: 10px;
+    /* Add spacing between icon and text */
+    margin-left: 40px
+}
+
+.option p {
+    margin-top: 20px;
+    /* Further adjust margin to move text lower */
+    font-weight: bold;
+    color: #333;
+    font-size: 24px;
+    /* Button text font size adjustment */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    /* Add text shadow for depth */
+}
+
+footer {
+    font-size: 16px;
+    /* Footer font size adjustment */
+    color: #777;
+    padding: 10px 0;
+    /* Add vertical padding */
+    text-align: center;
+    /* Center align text */
+    margin-top: auto;
+    /* Allow footer to occupy remaining space */
+}
+
+#headLearnBt {
+    position: relative;
+    bottom: 15px;
+    font-family: 'Jalnan';
+    border-radius: 5%;
+    font-size: 18px;
+    background-color: #053f79cc;
+    cursor: pointer;
+    padding: 5px 10px;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#headLearnBtRight {
+    position: relative;
+    left: 191px;
+    bottom: 15px;
+    font-family: 'Jalnan';
+    border-radius: 5%;
+    font-size: 18px;
+    /* 버튼 폰트 크기 조정 */
+    background-color: #053f79cc;
+    /* 군청색 배경 */
+    cursor: pointer;
+    padding: 5px 10px;
+    /* 버튼 패딩 조정 */
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-left: 230px;
+}
+
+
+button:hover {
+    background-color: #dae5ef;
+}
+
+button:active {
+    transform: translateY(4px);
+}
+
+@media (max-width: 768px) {
+    .hospital-container {
+        max-width: 90%;
+        /* 모바일 화면에서는 너비를 더 넓게 사용 */
+    }
+}

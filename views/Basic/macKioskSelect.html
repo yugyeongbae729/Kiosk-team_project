@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기초 교육과 심화 교육</title>
+    <link rel="stylesheet" href="/HosDeepKio/hospitalKiosk.css">
+</head>
+<body>
+    <div class="hospital-container">
+        <header>
+            <div class="head-button">
+                <button id="headLearnBt">◀ 이전으로</button>
+                <button id="headLearnBtRight">처음으로 ▶</button>
+            </div>
+            <h1 id="title">맥도날드 <br> 키오스크 실습 교육</h1>
+            
+            <div class="box">
+                <h2 id="subtitle">난이도를 아래에서 선택해주세요</h2> <br>
+                <h3 id="description">기초: 음성 안내가 나옴<br>심화:자유롭게 키오스크 선택 가능</h3>
+            </div>
+        </header>
+        <div class="options">
+            <div class="option" id="macBasicKiosk">
+                <img src="/pic/star.png" alt="">
+                <p id="basicEducation">기초 교육</p>
+            </div>
+            <div class="option" id="macDeepKiosk">
+                <img src="/pic/star2.png" alt="">
+                <p id="advancedEducation">심화 교육</p>
+            </div>
+        </div>
+        <footer>
+            <p id="footerText">일단 이거 세번 해볼까요?</p>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/macKioselect.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>접수하기(기초) 5</title>
+    <link rel="stylesheet" href="/HosBasicKio/hospitalKioskB5.css">
+</head>
+<body>
+    <audio src="/voice/hpFinish.mp3" autoplay>아무런 오디오도 없습니다.</audio>    <div class="hospitalContainer">
+        <header>
+            <div class="headButton">
+                <button id="headLearnBt">◀ 이전으로</button>
+                <button id="headLearnBtRight">처음으로 ▶</button>
+                <button id="headImgBtn"><img src="/pic/학습저장별.png" alt="" id="headImg"></button>
+            </div>
+            <h1 id="hTitle">손주병원</h1>
+        </header>
+        <div class="options">
+            <div class="option">
+                <div class="captionContainer">
+                    <img src="/123GIF/1.gif" alt="1gif" id="oneGif">
+                    <div class="captionBox">
+                        <span class="buttonText">[접수증]</span>이 출력되었다면<br> 접수증을 챙겨주세요.<br><br>
+                        접수증은 진료비 수납 시<br> 필요할 수 있으니 <span class="buttonText">[꼭]</span><br>
+                        가지고 있어주세요!<br><br>
+
+                        다음으로 <span class="buttonText">[수납하기]</span><br> 교육을 시작해보겠습니다.<br>
+                        <span class="buttonText">[확인]</span>버튼을 눌러<br> 초기화면으로 돌아가주세요.<br>
+                        <button id="completeBtn">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+        </footer>
+    </div>
+    <script>
+        
+        const headLearnBt = document.getElementById('headLearnBt')
+        headLearnBt.addEventListener('click', ()=>{
+            location.href = '/hospitalB4'
+        })
+
+        const completeBtn = document.getElementById('completeBtn')
+        completeBtn.addEventListener('click', ()=>{
+            location.href = '/hospitalB6'
+        })
+
+        const headLearnBtRight = document.getElementById('headLearnBtRight')
+        headLearnBtRight.addEventListener('click', ()=>{
+            location.href='/'
+        })
+
+        const hTitle = document.getElementById('hTitle')
+        hTitle.addEventListener('click', ()=>{
+            location.href='/hospital'
+        })
+
+        const infoPageNum = 5;
+            const infoPageName = '접수하기(기초) 5';
+            document.getElementById('headImgBtn').addEventListener('click', () => {
+                fetch('/kiosk/save-page-info', { // 수정된 경로
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include', // 세션 쿠키를 서버에 포함
+                    body: JSON.stringify({ infoPageNum: infoPageNum, infoPageName:infoPageName }) // 페이지 번호, 제목 포함해 전송
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('페이지 정보가 저장되었습니다.');
+                    } else {
+                        alert(data.message); // 로그인하지 않은 경우의 메시지
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            });
+
+    </script>
+</body>
+</html>

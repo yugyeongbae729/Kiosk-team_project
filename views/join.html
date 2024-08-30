@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Basic/join.css">
+</head>
+<body>
+    <div class="img">
+        <img src="/pic/Group 22.png" alt="Logo">
+    </div>
+    <form action="/user/join" method="post"  id="joinForm">
+        별명 : <input type="text" name="nick">
+        <input type="button" value="중복확인" onclick="checkNick()"> <br />
+        비밀번호 : <input type="password" name="pw"><br>
+        비밀번호 확인 : <input type="password" name="pwck"><br>
+        출생연도 : <input type="text" name="btd"><br>
+        <div class="gender">성별&nbsp&nbsp&nbsp&nbsp
+            남성<input type="radio" name="gen" value="male">
+            여성<input type="radio" name="gen" value="female"><br>
+        </div>
+
+        <div class="button-group">
+            <input type="submit" value="회원가입" id="submitBtn">
+            <input type="button" value="돌아가기" id="goMainBtn">
+        </div>
+    </form>
+
+    <script>
+        function checkNick() {
+            const nick = document.querySelector('input[name="nick"]').value;
+            if (!nick) {
+                alert('별명을 입력해주세요');
+                return;
+            }
+            fetch('/user/checkNick', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nick: nick })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.exists) {
+                        alert('이미 존재하는 별명입니다');
+                        document.querySelector('input[type="submit"][value="회원가입"]').disabled = true;
+                    } else {
+                        alert('사용 가능한 별명입니다');
+                        document.querySelector('input[type="submit"][value="회원가입"]').disabled = false;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+        document.getElementById('goMainBtn').addEventListener('click', function() {
+            location.href = '/';
+        });
+    </script>
+</body>
+</html>

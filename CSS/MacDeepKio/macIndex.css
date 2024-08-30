@@ -1,0 +1,693 @@
+@font-face {
+    font-family: 'Freesentation-9Black';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+}
+
+* {
+    font-family: 'Freesentation-9Black' ,Arial, sans-serif;
+    font-weight: 900;
+}
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+canvas {
+    border: 2px solid #000;
+    cursor: crosshair;
+}
+
+#kioskWrap {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.headButton {
+    position: absolute;
+    top: 0px;
+    /* Button position adjustment */
+    left: 235px;
+}
+
+#headLearnBt {
+    position: relative;
+    right: 25px;
+    font-family: 'Jalnan';
+    border-radius: 5%;
+    font-size: 18px;
+    /* Button font size adjustment */
+    background-color: #053f79cc;
+    /* Navy blue background */
+    cursor: pointer;
+    padding: 5px 10px;
+    /* Button padding adjustment */
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#headLearnBtRight {
+    right: 50px;
+    position: relative;
+    left: 100px;
+    font-family: 'Jalnan';
+    border-radius: 5%;
+    font-size: 18px;
+    /* 버튼 폰트 크기 조정 */
+    background-color: #053f79cc;
+    /* 군청색 배경 */
+    cursor: pointer;
+    padding: 5px 10px;
+    /* 버튼 패딩 조정 */
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-left: 230px;
+}
+
+.aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 170px;
+    min-width: 170px;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+#logoImg {
+    width: 100%;
+    background-color: transparent;
+}
+
+.aside > a {
+    border-bottom: 1px solid #c8c8c8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 180px;
+    background-color: #fff;
+}
+
+.aside .asideMenu {
+    border-right: 1px solid #c8c8c8;
+    border-left: 1px solid #c8c8c8;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.aside .asideMenu li {
+    border-bottom: 1px solid #c8c8c8;
+}
+
+.aside .asideMenu li.active {
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
+.aside .asideMenu li a {
+    padding: 0 20px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    text-align: left;
+    color: #000;
+    text-decoration: none;
+}
+
+#liDisable {
+    user-select: none;
+    pointer-events: none;
+    color: #000;
+    background-color: #dfdfdf;
+}
+
+.topNav {
+    position: fixed;
+    top: 50px;
+    left: 250px; /* 사이드바 너비 */
+    width: calc(100% - 170px);
+    overflow: hidden;
+}
+
+/* 키오스크 홈 화면 css */
+
+.row {
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.column {
+    width: calc(100% - 20px); /* 좌우 여백을 고려한 너비 조정 */
+    height: 6vh;
+    margin: 20px 10px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+#fullRowDiv{
+    width: 100%;
+}
+
+.fullRow {
+    margin:30px 0px;
+    border-radius: 5px;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow : hidden;
+}
+
+.fullRow img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#homeConDiv{
+    display: flex;
+    align-items: center;
+    width: 83vw;
+    margin-left: 19%;
+    opacity: 1;
+    transform: translateY(5%);
+    flex-wrap: wrap;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+#homeConDiv h1{
+    width: 83vw;
+    margin-left: 30px;
+}
+
+.mainContent {
+    margin-top: 120px;
+    margin-left: 180px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    opacity: 1;
+    transform: translateY(5%);
+    flex-wrap: wrap;
+    max-height: 60vh;
+    overflow-y: auto; 
+}
+
+.menuItem {
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    width: calc(33.333% - 40px);
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-height: 400px;
+}
+
+.menuItem img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.menuItem .description {
+    margin-top: 10px;
+}
+
+.menuItem h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.menuItem p {
+    font-size: 16px;
+    color: #333;
+}
+
+.cart {
+    position: fixed;
+    bottom: 50px;
+    height: 5vh;
+    right: 0;
+    width: calc(100% - 170px);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+#mainCartDiv{
+    gap: 100px;
+    
+}
+
+/* 모달 스타일 */
+
+#orderModal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255); /* 검은색 배경 투명도 */
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    /* background-color: #fefefe; */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* 사이드바 위에 표시되도록 */
+}
+.modalContent h1{
+    width: 80%;
+}
+
+.addToCartContainer {
+    display: flex;
+    width: 80%;
+}
+
+.addToCart {
+    padding: 0px;
+    flex: 1;
+    background-color: transparent;
+    border: 1px solid #888;
+    border-radius: 10px;
+    justify-content: space-between;
+    margin: 0 10px 50px 10px; /* 버튼 사이의 간격 */
+}
+
+.addToCart h1{
+    display: inline;
+}
+
+#onePrice{
+    display: inline;
+    padding: 0px 20px;
+}
+
+.addToCart:first-child {
+    margin-left: 0; /* 첫 번째 버튼은 왼쪽 여백 제거 */
+}
+
+.addToCart:last-child {
+    margin-right: 0; /* 마지막 버튼은 오른쪽 여백 제거 */
+}
+
+.addToCart img {
+    width:100%;
+    border-radius: 10px;
+}
+
+.cancleBtn{
+    width: 80%;
+    height: 80px;
+    background-color: transparent;
+    border: 1px solid #888;
+    border-radius: 10px;
+    font-size: 2em;
+}
+
+#setModal {
+    display: none; 
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255); /* 검은색 배경 투명도 */
+    justify-content: center;
+    align-items: center;
+}
+
+.setContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    z-index: 2;
+}
+
+.setContent h1 {
+    width: 79%;
+}
+
+#selectSide {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 40vh;
+    overflow-y: auto;
+    margin-bottom: 100px;
+}
+
+.sideMenuItem {
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    width: calc(33.333% - 30px);
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.sideMenuItem img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* =========== 음료 모달 css ============= */
+
+#beverageModal {
+    display: none; 
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255); /* 검은색 배경 투명도 */
+    justify-content: center;
+    align-items: center;
+}
+
+#selectBeverage {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 40vh;
+    overflow-y: auto;
+    margin-bottom: 100px;
+}
+
+.beverageMenuItem {
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    width: calc(33.333% - 30px);
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.beverageMenuItem img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+
+/* ===============================세트 확인 css */
+
+#setEndModal {
+    display: none; 
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255); /* 검은색 배경 투명도 */
+    justify-content: center;
+    align-items: center;
+}
+
+/* ====================================================================== */
+.setMainCon{
+    width: 60%;
+}
+
+.setMaintitle {
+    font-size: 3em;
+    margin: 0px;
+}
+
+.setMainprice {
+    font-size: 3em;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.setMainImg {
+    border-radius: 15px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 40px;
+}
+
+.setSubCon {
+    display: flex;
+    width: 60%;
+}
+
+.setSubItem {
+    width: calc(33.333% - 20px);
+    flex: 1;
+    text-align: center;
+    margin: 0px 10px;
+}
+
+.setSubImg {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.setSubTxt {
+    margin-top: 10px;
+    font-size: 1em;
+}
+
+/* ============================================== 결제 진행 모달 ================================================ */
+#paymentModal {
+    display: none; 
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255); /* 검은색 배경 투명도 */
+    /* justify-content: center; */
+    align-items: center;
+}
+
+#paymentTitle {
+    margin: 0;
+    font-size: 60px;
+    text-align: left;
+    margin-bottom: 20px; /* 제목과 목록 사이의 여백 */
+}
+
+#showCart {
+    top: 10px;
+    display: flex;
+    height: 100%;
+    max-height:60vh;
+    overflow-y: auto;
+    margin-bottom: 100px;
+}
+
+#cartItemsList {
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#cartItemsList li{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    border: 3px solid #000000;
+    border-radius: 10px;
+    width: 100%; /* li 요소가 부모의 너비를 100% 차지하도록 설정 */
+    box-sizing: border-box; /* 패딩과 테두리를 포함하여 너비 계산 */
+    gap: 20px; /* 자식 요소 간의 간격을 일정하게 설정 */
+}
+
+#cartItemsList li img{
+    max-width: 200px;
+    flex-shrink: 0;
+}
+
+#cartItemsList li h1{
+    margin: 0;
+    flex : 1;
+}
+
+#cartItemsList li p {
+    text-align: right;
+}
+
+.paymentTextCon{
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+    text-align: end;
+    height: 5vh;
+    position: absolute;
+    bottom: 13%;
+}
+
+.paymentBtnCon{
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+    height: 5vh;
+    gap: 40px; 
+    position: absolute;
+    bottom: 5%;
+}
+
+#paymentBtnDiv{
+    position: static;
+}
+
+.paymentBtnCon button{
+    font-size: 2vh;
+    border-radius: 20px;
+}
+
+.canBtn{
+    background-color: transparent;
+    width: 40%;
+}
+
+.CartBtn{
+    background-color: #ffe600;
+    width: 60%;
+}
+
+/* ======================================================== */
+
+/* 결제 완료 모달 */
+#cardPayModal{
+    display: none;  
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255); /* 검은색 배경 투명도 */
+    z-index: 3;
+    align-items: center;
+}
+
+#cardPayTitle{
+    white-space: pre-line;
+    text-align: center;
+    margin-bottom: 200px;
+    font-size: 3vh;
+}
+
+#cardPayImg{
+    max-width: 50%;
+    transform: translateX(-7%);
+}
+
+.decincBtn{
+    width: 25px;
+    height: 25px;
+    border: 1px solid black;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+/* =================실습 완료 모달================== */
+.missionModal{
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#selectorderNumModal{
+    top: 0;
+    left: 0;
+    display: none;
+    position: fixed;
+}
+
+#endModal{
+    display: none;  
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255); /* 검은색 배경 투명도 */
+    align-items: center;
+}
+
+.missionModalContent{
+    position: relative;
+    width: 50vw;
+    height: 40vh;
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+    border: solid 3px #ffe600;
+    background-color: white;
+}
+
+.missionModalContent img{
+    width: 15vw;
+}
+
+.missionModalContent p{
+    font-size: 1.8em;
+}
+
+.pContainer {
+    /* p 태그 컨테이너 스타일 */
+    display: flex;
+    flex-direction: column; /* 수직 정렬 */
+    justify-content: center; /* 수직 중앙 정렬 */
+    height: 40%; /* 부모 요소의 전체 높이 사용 */
+}
+
+.missionModalContent button{
+    position: absolute; /* 부모 요소에 절대적 위치 */
+    bottom: 45px; /* 하단에서 30px */
+    left: 50%; /* 수평 중앙 정렬 */
+    transform: translateX(-50%); /* 가운데 정렬 */
+    background-color: #ffe600;
+    border-radius: 20px;
+    border: solid 3px black;
+    font-size: 30px;
+    height: 5vh;
+    width: 80%;
+}

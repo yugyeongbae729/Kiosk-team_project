@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이 페이지</title>
+    <link rel="stylesheet" href="/Basic/mypage.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="profile">
+                <div class="profile-img-wrapper" id="headImg">
+                    <img src="./pic/123.png" alt="프로필 이미지">
+                </div>
+                <div class="profile-info">
+                    <div id="nameTag">학습자님 환영합니다!</div>
+                </div>
+            </div>
+        </div>
+        <div class="menu">
+            <a href="update" id="startUpdateBtn"><img src="./Image/내정보.png" alt="">내 정보 관리</a>
+            <a href="learningNote" id="startNoteBtn"><img src="./Image/학습노트.png" alt="">학습노트 가기</a>
+            <a href="user/logout" id="LogoutBtn"><img src="/pic/logout.png">로그아웃</a>
+            <a href="delete" id="deleteBtn">계정탈퇴</a>
+        </div>
+    </div>
+    <script>
+        const headImg = document.getElementById('headImg').addEventListener('click', ()=>{
+            location.href = '/'
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>접수하기(기초) 1</title>
+    <link rel="stylesheet" href="/HosBasicKio/hospitalKioskB1.css">
+</head>
+
+<body>
+    <audio src="/voice/hpjeopsoo.mp3" autoplay>이 오디오는 실행할 수 없습니다.</audio>
+    <div class="hospitalContainer">
+        <header>
+            <div class="headButton">
+                <button id="headLearnBt">◀ 이전으로</button>
+                <button id="headLearnBtRight">처음으로 ▶</button>
+                <button id="headImgBtn"><img src="/pic/학습저장별.png" alt="" id="headImg"></button>
+            </div>
+            <h1 id="hTitle">손주병원</h1>
+        </header>
+        <div class="options">
+            <div class="option">
+                <img src="/123GIF/1.gif" alt="1gif" id="oneGif">
+                <div id="optionLeft">
+                    <button class="optionButton">
+                        <img src="/pic/kiosk.png" alt="">
+                        <p>접수하기</p>
+                    </button>
+                </div>
+                <div class="optionRight">
+                    <button class="optionButton">
+                        <img src="/pic/question.png" alt="">
+                        <p>수납하기</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="captionContainer">
+            <div class="captionBox">
+                먼저 진료 접수를 진행하기<br> 위해
+                <span class="buttonText">[접수하기]</span><br> 버튼을 눌러주세요.
+            </div>
+        </div>
+    </div>
+    <script>
+        const optionLeft = document.getElementById('optionLeft')
+        optionLeft.addEventListener('click', () => {
+            location.href = '/hospitalB2'
+        })
+
+        const headLearnBt = document.getElementById('headLearnBt')
+        headLearnBt.addEventListener('click', () => {
+            location.href = '/hospital'
+        })
+
+        const headLearnBtRight = document.getElementById('headLearnBtRight')
+        headLearnBtRight.addEventListener('click', () => {
+            location.href = '/'
+        })
+
+        const hTitle = document.getElementById('hTitle')
+        hTitle.addEventListener('click', () => {
+            location.href = '/hospital'
+        })
+        const infoPageNum = 1;
+        const infoPageName = '접수하기(기초) 1';
+        document.getElementById('headImgBtn').addEventListener('click', () => {
+            fetch('/kiosk/save-page-info', { // 수정된 경로
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include', // 세션 쿠키를 서버에 포함
+                body: JSON.stringify({ infoPageNum: infoPageNum, infoPageName: infoPageName }) // 페이지 번호, 제목 포함해 전송
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('페이지 정보가 저장되었습니다.');
+                    } else {
+                        alert(data.message); // 로그인하지 않은 경우의 메시지
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+        // console.log('Data received from client:', req.body);
+        // console.log('Query executed successfully:', results);
+    </script>
+</body>
+
+</html>

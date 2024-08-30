@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Basic/update.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>내 정보 관리</h1>
+        <form action="/user/update" method="post" id="updateFrm">
+            <div class="formGroup">
+                <label for="nick">바꾸실 별명</label>
+                <input type="text" name="nick" id="nick" placeholder="별명">
+            </div>
+            <div class="formGroup">
+                <label for="currentNick">현재 별명</label>
+                <input type="text" name="currentNick" id="currentNick" placeholder="별명">
+            </div>
+            <div class="formGroup">
+                <label for="pw">비밀번호</label>
+                <input type="password" name="pw" id="pw" placeholder="비밀번호">
+            </div>
+            <input type="submit" value="변경하기" class="submitBtn">
+        </form>
+    </div>
+</body>
+</html>

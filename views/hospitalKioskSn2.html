@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수납하기(심화) 2</title>
+    <link rel="stylesheet" href="/HosDeepKio/hpKiosksoonap2.css">
+</head>
+<body>
+    <div class="hospital-container">
+        <header>
+            <div class="head-button">
+                <button onclick="redirectTohpKiosksoonap1()" id="head_learn_bt">◀ 이전으로</button>
+                <button id="headLearnBtRight">처음으로 ▶</button>
+                <button id="headImgBtn"><img src="/pic/학습저장별.png" alt="" id="headImg"></button>
+            </div>
+            <h1 id="hTitle">손주병원</h1>
+        </header>
+        <div class="options">
+            <div class="option">
+                <img src="/hospitalImg/learn_rebg.png" alt="" class="room-icon">
+                <h2>결제 정보를 확인해주세요</h2>
+                
+                <!-- 테이블 추가 -->
+                <table class="info-table">
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>정보</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>진료일자</td>
+                            <td>202*년 9월 14일</td>
+                        </tr>
+                        <tr>
+                            <td>결제금액</td>
+                            <td>9,800원</td>
+                        </tr>
+                        <tr>
+                            <td>처방전</td>
+                            <td>출력</td>
+                        </tr>
+                        <tr>
+                            <td>보험제출서류</td>
+                            <td><button class="insurance-btn" onclick="selInsuDoc()">선택하기</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!-- 버튼 추가 -->
+                <button class="acceptance-btn" onclick="showModal()"><img src="/hospitalImg/cardimg.png">
+                    결제하기
+                </button>
+            </div>
+        </div>
+        <footer>
+        </footer>
+    </div>
+    
+    <!-- 모달 추가 -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h1 class="modalh1">카드결제</h1>
+            <p class="modalp">카드를 넣어주세요. 결제가</p>
+            <p class="modalp">완료될 때까지 카드를 빼지 마세요</p>
+            <p class="modalc">결제 금액 <span class="numhighlight">9,800</span>원</p>
+            <img src="/hospitalImg/creditimg.png" alt="">
+            <button class="modalCardInsert" onclick="togoReceipt()">카드 투입</button>
+        </div>
+    </div>
+
+    <script>
+        function redirectTohpKiosksoonap1() {
+            window.location.href = 'hospitalKioskSn1.html'
+        }
+
+        function showModal() {
+            document.getElementById('paymentModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('paymentModal')) {
+                closeModal();
+            }
+        }
+
+        function togoReceipt() {
+            window.location.href = 'hospitalKioskSn3.html'
+        }
+
+        const headLearnBtRight = document.getElementById('headLearnBtRight')
+        headLearnBtRight.addEventListener('click', ()=>{
+            location.href='/'
+        })
+
+        const hTitle = document.getElementById('hTitle')
+        hTitle.addEventListener('click', ()=>{
+            location.href='/hospital'
+        })
+
+        const infoPageNum = 16;
+            const infoPageName = '수납하기(심화) 2';
+            document.getElementById('headImgBtn').addEventListener('click', () => {
+                fetch('/kiosk/save-page-info', { // 수정된 경로
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include', // 세션 쿠키를 서버에 포함
+                    body: JSON.stringify({ infoPageNum: infoPageNum, infoPageName:infoPageName }) // 페이지 번호, 제목 포함해 전송
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('페이지 정보가 저장되었습니다.');
+                    } else {
+                        alert(data.message); // 로그인하지 않은 경우의 메시지
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            });
+            console.log('Data received from client:', req.body);
+            console.log('Query executed successfully:', results);
+    </script>
+</body>
+</html>

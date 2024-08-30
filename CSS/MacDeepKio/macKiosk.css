@@ -1,0 +1,128 @@
+@font-face {
+    font-family: 'Freesentation-9Black';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+}
+
+* {
+    font-family: 'Freesentation-9Black', Arial, sans-serif;
+    font-weight: 900;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #fff;
+}
+
+#macIntro {
+    height: 100%;
+    width: 100%;
+}
+
+#macIntroHeder {
+    display: flex;
+    max-height: 70vh;
+    align-items: center;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+#macIntroHeder img {
+    width: 100%;
+}
+
+#macIntroBody {
+    display: flex;
+    width: 100%;
+}
+
+.macBodyDiv {
+    margin: 25px;
+    width: 100%;
+    height: 20vh;
+    /* 페이지 높이의 60% */
+}
+
+#macPointDiv {
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffc424;
+    flex-flow: column;
+    font-size: 40px;
+}
+
+#macStartBtn {
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40%;
+    font-size: 40px;
+}
+
+#macSubBtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+#macSubBtn button {
+    width: 100%;
+    height: 80px;
+}
+
+#goMain {
+    margin-left: 6px;
+}
+
+/* ================================================= 모달 =================================================== */
+
+.macStartModal {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    /* Fallback color */
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.macModalContent {
+    width: 80%;
+    text-align: center;
+    position: relative;
+    top: -10vh;
+}
+
+.macModalContent h1 {
+    font-size: 5vh;
+}
+
+#macModalBtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#macModalBtn button {
+    width: 45%;
+    height: 30vh;
+    font-size: 5vh;
+    border-radius: 15px;
+    background-color: transparent;
+}
+
+#macModalBtn button img{
+    width : 85%;
+}

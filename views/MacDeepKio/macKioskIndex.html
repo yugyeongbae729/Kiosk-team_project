@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/MacDeepKio/macIndex.css">
+    <title>Sidebar Example</title>
+</head>
+
+<body>
+    <div id="kioskWrap">
+        <div class="headButton">
+            <button id="headLearnBt">◀ 이전으로</button>
+            <button id="headLearnBtRight">처음으로▶</button>
+        </div>
+        <div class="aside">
+            <a href="/macDeepKioIndex"><img id="logoImg" src="/MacImg/macLogo.png"></a>
+            <ul class="asideMenu">
+                <li class="active"><a href="/macDeepKioIndex">홈</a></li>
+                <li class="disable" id="liDisable"><a href="#none">추천메뉴</a></li>
+                <li><a href="/macKiosk/macBuger">버거</a></li>
+                <li><a href="/macKiosk/macSide">사이드</a></li>
+                <li><a href="/macKiosk/macDessert">디저트</a></li>
+                <li><a href="/macKiosK/macBeverage">음료</a></li>
+            </ul>
+        </div>
+    {% block content %}
+        <div id="homeConDiv">
+            <h1>홈</h1>
+            <div class="row">
+                <div class="column">추천메뉴 ⭐</div>
+                <div class="column">이달의 해피 스낵 🌈</div>
+            </div>
+            <div class="row">
+                <div class="column">버거 & 세트 🍔</div>
+                <div class="column">커피 & 디저트 ☕</div>
+            </div>
+            <div id="fullRowDiv">
+                <div class="fullRow"><img src="/MacImg/macBanner1.png" ></div>
+                <div class="fullRow"><img src="/MacImg/macBanner2.png" ></div>
+                <div class="fullRow"><img src="/MacImg/macBanner3.png" ></div>
+            </div>
+        </div>
+    {% endblock %}
+
+    <div class="cart">
+        <div class="paymentBtnCon" id="mainCartDiv" >
+            <h1 id="totalPrice">0</h1>
+            <button class="CartBtn" id="paymentBtn">주문 완료</button>
+        </div>
+    </div>
+    
+    <!-- 세트 선택 모달 -->
+    <div id="orderModal">
+        <div class="modalContent">
+            <h1>세트로 주문하시겠습니까?</h1>
+            <div class="addToCartContainer">
+                <button id="addToCartS" class="addToCart"><img id="burgerSetImg"><h1>세트선택</h1></button>
+                <button id="addToCartO" class="addToCart"><img id="burgerSingImg"><h1>단품선택</h1>&nbsp;<h2 id="onePrice"></h2></button>
+            </div>
+            <button id="orderCancel" class="cancleBtn">뒤로가기</button>
+        </div>
+    </div>
+
+    <!-- 세트 사이드 선택 모달 -->
+    <div id="setModal" class="setContent">
+        <h1>사이드메뉴를 선택하세요</h1>
+        <div class="addToCartContainer" id="selectSide"></div>
+        <button id="sideCancel" class="cancleBtn">뒤로가기</button>
+    </div>
+
+    <!-- 세트 음료 선택 모달 -->
+    <div id="beverageModal" class="setContent">
+        <h1>음료를 선택하세요</h1>
+        <div class="addToCartContainer" id="selectBeverage"></div>
+        <button id="beverageCancel" class="cancleBtn">뒤로가기</button>
+    </div>
+
+    <!-- 세트 선택 내용 모달 -->
+    <div id="setEndModal" class="setContent">
+        <div class="setMainCon">
+            <h1 class="setMaintitle"></h1>
+            <h1 class="setMainprice"></h1>
+            <img class="setMainImg">
+        </div>
+        <div class="setSubCon">
+        </div>
+        <div class="paymentBtnCon" id="paymentBtnDiv">
+            <button class="canBtn" id="setBackBtn">돌아가기</button>
+            <button class="CartBtn" id="setEndBtn">장바구니에 추가</button>
+        </div>
+    </div>
+
+    <!-- 결제확인 모달 -->
+    <div id="paymentModal" class="setContent">
+        <h1 id="paymentTitle">주문</h1>
+        <div class="addToCartContainer" id="showCart">
+            <ul id="cartItemsList">
+                
+            </ul>
+        </div>
+        <div class="paymentTextCon">
+            <h1>합계</h1>
+            <h1 id="paymentSumText"><span></span></h1>
+        </div>
+        <div class="paymentBtnCon">
+            <button class="canBtn" id="paycanBtn">돌아가기</button>
+            <button class="CartBtn" id="payCartBtn">결제하기</button>
+        </div>
+    </div>
+
+    <!-- 결제 모달 -->
+    <div id="cardPayModal" class="setContent">
+        <h1 id="cardPayTitle">결제하실 카드를<br>투입구에 넣어주세요.</h1>
+        <img src="/MacImg/macPayment.png" id="cardPayImg">
+    </div>
+
+    <!-- 실습 종료 모달 -->
+    <div id="endModal" class="setContent">
+    </div>
+
+    <!-- 9. 실습 종료 안내모달 -->
+    <div id="selectorderNumModal" class="missionModal">
+        <div class="missionModalContent">
+            <img src="/123GIF/2.gif" alt="Animated GIF">
+            <div class="pContainer">
+                <p>주문번호는 123번 입니다. 주문번호를 확인하시고<br>음식을 가져가주세요.</p>
+            </div>
+            <button id="selectorderNumModalBtn">실습 종료</button>
+        </div>
+    </div>
+
+</div>
+<script src="/jquery-3.7.1.min.js"></script>
+<script src="/macDeepCart.js"></script>
+</body>
+
+</html>

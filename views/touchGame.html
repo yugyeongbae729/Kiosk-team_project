@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <link rel="stylesheet" href="/Basic/touchGame.css">
+    <title>123_미니게임</title>
+</head>
+<body>
+    <div id="startModal" class="startModal">
+        <div class="startcontent">
+            <img src="/pic/pic.png" alt="logo" class="startimg">
+            <div class="innerModal">
+                <h5 id="starttext1">낱말-그림 게임</h5>
+                <div id="starttext">그림에 알맞은 음식메뉴에 선을 그어 연결해주세요.
+                    <button id="startGameBtn">게임시작</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="canvas" width="720" height="1280"></canvas>
+
+    <div id="gameModal" class="gameModal">
+        <div class="modalContent">
+            <span class="gameModalClose">&times;</span>
+            <img id="modalGameImage" src="" alt="게임 이미지" />
+            <h3 id="modalGameAns" class="modalGameText">게임 제목</h3>
+            <h5 id="modalGameEX" class="modalGameText">여기 설명 작성하기 태그는 편하게 변경</h5>
+            <div class="controls">
+                <button id="prevBtn">이전</button>
+                <button id="nextBtn">다음</button>
+            </div>
+            <div class="controls">
+                <button id="resetBtn">다시하기</button>
+                <button id="mainBtn">처음으로</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/touchGame.js"></script>
+</body>
+</html>

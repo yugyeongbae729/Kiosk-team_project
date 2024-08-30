@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>접수하기(심화) 2</title>
+    <link rel="stylesheet" href="/HosDeepKio/hospitalKiosk4.css">
+</head>
+<body>
+    <div class="hospital-container">
+        <header>
+            <div class="head-button">
+                <button onclick="redirectToHospitalKiosk3()" id="head_learn_bt">◀ 이전으로</button>
+                <button id="headLearnBtRight">처음으로 ▶</button>
+                <button id="headImgBtn"><img src="/pic/학습저장별.png" alt="" id="headImg"></button>
+            </div>
+            <h1 id="hTitle">손주병원</h1>
+        </header>
+        <div class="options">
+            <div class="option">
+                <h2>진료 접수</h2>
+                <div class="input-section">
+                    <div class="radio-group">
+                        <label><input type="radio" name="contact" value="phone" id="phone">휴대폰번호</label>
+                        <label><input type="radio" name="contact" value="id" id="id" checked>주민등록번호</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="contact-input" oninput="formatInput()" />
+                        <input type="hidden" id="real-input" />
+                    </div>
+                    <div class="keypad">
+                        <div class="key-row">
+                            <button onclick="appendValue(1)">1</button>
+                            <button onclick="appendValue(2)">2</button>
+                            <button onclick="appendValue(3)">3</button>
+                        </div>
+                        <div class="key-row">
+                            <button onclick="appendValue(4)">4</button>
+                            <button onclick="appendValue(5)">5</button>
+                            <button onclick="appendValue(6)">6</button>
+                        </div>
+                        <div class="key-row">
+                            <button onclick="appendValue(7)">7</button>
+                            <button onclick="appendValue(8)">8</button>
+                            <button onclick="appendValue(9)">9</button>
+                        </div>
+                        <div class="key-row">
+                            <button class="empty-button"></button>
+                            <button onclick="appendValue(0)">0</button>
+                            <button class="backspace" onclick="removeValue()">◀</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="agreement">
+                        <input type="checkbox" name="agreement" id="agree">
+                        <label for="agree">개인정보 수집 동의(필수)</label>
+                    </div>
+                    <button class="submit-btn" onclick="submitForm()">입력완료</button>
+                </div>
+            </div>
+        </div>
+        <footer>
+        </footer>
+    </div>
+
+    <script>
+        function appendValue(value) {
+            const realInputField = document.getElementById('real-input');
+            realInputField.value += value;
+            formatInput();
+        }
+
+        function removeValue() {
+            const realInputField = document.getElementById('real-input');
+            realInputField.value = realInputField.value.slice(0, -1);
+            formatInput();
+        }
+
+        function formatInput() {
+            const inputField = document.getElementById('contact-input');
+            const realInputField = document.getElementById('real-input');
+            const radioPhone = document.getElementById('phone').checked;
+            let value = realInputField.value.replace(/[^0-9]/g, ''); // 숫자만 남김
+
+            if (radioPhone) {
+                // 휴대폰 번호 포맷
+                if (value.length > 3) value = value.slice(0, 3) + '-' + value.slice(3);
+                if (value.length > 8) value = value.slice(0, 8) + '-' + value.slice(8);
+                inputField.value = value.slice(0, 13); // 최대 길이 제한
+        } else {
+                // 주민등록번호 포맷
+                let maskedValue = value;
+                if (value.length > 6) maskedValue = value.slice(0, 6) + '-' + '*'.repeat(value.length - 6);
+                inputField.value = maskedValue.slice(0, 14); // 최대 길이 제한
+            }
+
+            realInputField.value = value.slice(0, 13); // 실제 입력된 값도 길이 제한
+        }
+
+        function submitForm() {
+            const agreeCheckbox = document.getElementById('agree');
+            if (!agreeCheckbox.checked) {
+                alert('개인정보 수집 동의 항목을 체크해 주세요.');
+                return;
+            }
+
+            const realInputField = document.getElementById('real-input');
+            const radioPhone = document.getElementById('phone').checked;
+
+            if (radioPhone) {
+                if (realInputField.value.length !== 13) {
+                    alert('휴대폰 번호를 끝까지 입력해주세요');
+                    return;
+                }
+            } else {
+                if (realInputField.value.length !== 13) {
+                    alert('주민등록번호를 끝까지 입력해주세요');
+                    return;
+                }
+            }
+
+            window.location.href = 'hospitalKiosk5.html';
+
+            console.log('실제 입력된 값:', realInputField.value);
+            // 여기에 실제 값을 서버로 보내는 코드 추가
+        }
+
+        function redirectToHospitalKiosk3() {
+            window.location.href = 'hospitalKiosk3.html'
+        }
+        function goToHospitalKiosk5() {
+            window.location.href = 'hospitalKiosk5.html'
+        }
+
+        const headLearnBtRight = document.getElementById('headLearnBtRight')
+        headLearnBtRight.addEventListener('click', ()=>{
+            location.href='/'
+        })
+
+        const hTitle = document.getElementById('hTitle')
+        hTitle.addEventListener('click', ()=>{
+            location.href='/hospital'
+        })
+
+        const infoPageNum = 12;
+            const infoPageName = '접수하기(심화) 2';
+            document.getElementById('headImgBtn').addEventListener('click', () => {
+                fetch('/kiosk/save-page-info', { // 수정된 경로
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include', // 세션 쿠키를 서버에 포함
+                    body: JSON.stringify({ infoPageNum: infoPageNum, infoPageName:infoPageName }) // 페이지 번호, 제목 포함해 전송
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('페이지 정보가 저장되었습니다.');
+                    } else {
+                        alert(data.message); // 로그인하지 않은 경우의 메시지
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            });
+            console.log('Data received from client:', req.body);
+            console.log('Query executed successfully:', results);
+    </script>
+</body>
+</html>

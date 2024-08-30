@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수납하기(기초) 3</title>
+    <link rel="stylesheet" href="/HosBasicKio/hospitalKioskB8.css">
+</head>
+
+<body>
+    <audio src="/voice/hpPay.mp3" id="hpPay" autoplay></audio>
+    <audio src="/voice/cardPay.mp3" id="cardPay"></audio>
+    <div class="hospitalContainer">
+        <img src="/123GIF/1.gif" alt="1gif" id="oneGif">
+
+        <header>
+            <div class="headButton">
+                <button id="headLearnBt">◀ 이전으로</button>
+                <button id="headLearnBtRight">처음으로 ▶</button>
+                <button id="headImgBtn"><img src="/pic/학습저장별.png" alt="" id="headImg"></button>
+            </div>
+            <h1 id="hTitle">손주병원</h1>
+        </header>
+        <div class="options">
+            <div class="option">
+                <img src="/hospitalImg/learn_rebg.png" alt="" class="roomIcon">
+                <h2>결제 정보를 확인해주세요</h2>
+
+                <!-- 테이블 추가 -->
+                <table class="infoTable">
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>정보</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>진료일자</td>
+                            <td>202*년 9월 14일</td>
+                        </tr>
+                        <tr>
+                            <td>결제금액</td>
+                            <td>9,800원</td>
+                        </tr>
+                        <tr>
+                            <td>처방전</td>
+                            <td>출력</td>
+                        </tr>
+                        <tr>
+                            <td>수납여부</td>
+                            <td><input type="checkbox" name="soopnapBox" id="spBox"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="captionContainer" id="captionModal">
+                    <div class="captionBox">
+                        결제 정보를 확인하신 후<br>
+                        <span class="buttonText">[수납여부]</span> 를 체크하고<br>
+                        <span class="buttonText">[결제하기]</span> 버튼을
+                        <br>눌러주세요
+                    </div>
+                </div>
+
+                <!-- 버튼 추가 -->
+                <button class="acceptanceBtn" onclick="showModal()"><img src="/hospitalImg/cardimg.png">
+                    결제하기
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 보류 -->
+    <!-- <div class="captionContainer" id="cardInModal">
+        <div class="captionBox">
+            <span class="buttonText">[카드 투입]</span>버튼을 눌러<br>
+            결제를 완료해보세요!
+        </div>
+    </div> -->
+
+    <!-- 모달 추가 -->
+    <div id="paymentModal" class="modal">
+        <div class="modalContent">
+            <img src="/123GIF/1.gif" alt="1gif" id="oneGifSec">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h1 class="modalh1">카드결제</h1>
+            <p class="modalp">카드를 넣어주세요. 결제가</p>
+            <p class="modalp">완료될 때까지 카드를 빼지 마세요</p>
+            <p class="modalc">결제 금액 <span class="numhighlight">9,800</span>원</p>
+            <img src="/hospitalImg/creditimg.png" alt="">
+            <button class="modalCardInsert" onclick="togoReceipt()">카드 투입</button>
+        </div>
+    </div>
+
+    <script>
+        function redirectTohpKiosksoonap1() {
+            window.location.href = 'hpKiosksoonap1.html'
+        }
+
+        // const cardInModal = document.getElementById('cardInModal')
+        // cardInModal.style.display = 'none'
+
+
+        const hpPay = document.getElementById('hpPay')
+        const cardPay = document.getElementById('cardPay')
+        const oneGif = document.getElementById('oneGif')
+        const oneGifSec = document.getElementById('oneGifSec')
+        oneGifSec.style.display = 'none';
+        cardPay.pause();
+        function showModal() {
+            document.getElementById('paymentModal').style.display = 'block';
+            document.getElementById('captionModal').style.display = 'none'
+            // cardInModal.style.display = 'flex';
+            checkCardInsert();
+            oneGif.style.display = 'none';
+            oneGifSec.style.display = 'flex';
+            hpPay.pause();
+            cardPay.play();
+        }
+
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById('paymentModal')) {
+                closeModal();
+            }
+        }
+
+        function togoReceipt() {
+            window.location.href = 'hospitalB9'
+        }
+
+        function checkCardInsert() {
+            const cardInsertBtn = document.querySelector('.modalCardInsert');
+            cardInsertBtn.classList.add('highlight-red-border');
+        }
+
+        const headLearnBt = document.getElementById('headLearnBt')
+        headLearnBt.addEventListener('click', ()=>{
+            location.href='/hospitalB7'
+        })
+
+        const hTitle = document.getElementById('hTitle')
+        hTitle.addEventListener('click', ()=>{
+            location.href='/hospital'
+        })
+
+        const headLearnBtRight = document.getElementById('headLearnBtRight')
+        headLearnBtRight.addEventListener('click', ()=>{
+            location.href='/'})
+
+            const infoPageNum = 8;
+            const infoPageName = '수납하기(기초) 3';
+            document.getElementById('headImgBtn').addEventListener('click', () => {
+                fetch('/kiosk/save-page-info', { // 수정된 경로
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include', // 세션 쿠키를 서버에 포함
+                    body: JSON.stringify({ infoPageNum: infoPageNum, infoPageName:infoPageName }) // 페이지 번호, 제목 포함해 전송
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('페이지 정보가 저장되었습니다.');
+                    } else {
+                        alert(data.message); // 로그인하지 않은 경우의 메시지
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            });
+
+    </script>
+</body>
+
+</html>

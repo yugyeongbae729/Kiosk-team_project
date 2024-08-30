@@ -1,0 +1,213 @@
+
+@font-face {
+    font-family: 'Freesentation-9Black';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #aa6fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 80vw;
+    width: 100vmin; /* 100vh * (9/16) */
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    position: relative;
+
+    /* 위치 기준 설정 */
+}
+
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header .menu {
+    display: flex;
+    gap: 20px;
+}
+
+.content {
+    padding: 40px 20px;
+}
+
+.content h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.content img {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+.search-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    font-size: 16px;
+    padding-left: 40px;
+}
+
+.search-box .icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+}
+
+.img {
+    text-align: center;
+    flex-direction: column;
+    padding: 20px 0;
+    margin-top: 5px;
+}
+
+
+.img.text p {
+    font-size: 25px;
+    margin: 10px 0;
+}
+
+
+.img img {
+    width: 500px !important; /* 강제로 500px 적용 */
+}
+
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.tags .tag {
+    font-family: 'Freesentation-9Black';
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1rem;
+    background-color: #ffeb3b;
+    width: 150px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #000000;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.tags .tag:hover {
+    background-color: #e0e0e0;
+}
+
+.article {
+    margin-bottom: 40px;
+}
+
+.article h2 {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.article p {
+    font-size: 18px;
+    color: #e0e0e0;
+}
+
+.max-width {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.top-menu {
+    position: absolute;
+    /* 절대 위치 설정 */
+    top: 20px;
+    /* 상단에서 20px 떨어진 위치 */
+    right: 20px;
+    /* 오른쪽에서 20px 떨어진 위치 */
+    display: flex;
+    justify-content: flex-end;
+    background-color: #ffffff;
+    padding: 10px;
+}
+
+.top-menu .left,
+.top-menu .right {
+    display: flex;
+    gap: 10px;
+}
+
+.top-menu button {
+    padding: 10px 50px;
+    color: white;
+    font-family: 'Freesentation-9Black';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    background-color: rgb(253, 61, 61);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.top-menu button:hover {
+    background-color: #ffeb3b;
+}
+
+.sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+}
+
+.section {
+    background-color: #faf8f8;
+    padding: 5px;
+    border-radius: 2px;
+    text-align: center;
+}
+
+.section img {
+    margin-top: 30px;
+    width: 50px;
+    height: 50%;
+}
+
+

@@ -1,0 +1,19 @@
+{% extends 'MacDeepKio/macKioskIndex.html' %}
+
+{% block content %}
+    <nav class="topNav">
+        <h1>버거</h1>
+        <p>메뉴를 골라주세요.</p>
+    </nav>
+<div class="mainContent">
+{% for info in rows %}
+    <div class="burgerItem menuItem" data-name="{{info.IMG_NAME}}" data-price="{{info.IMG_PRICE}}" data-path="{{info.IMG_GROUP+info.IMG_PATH}}">
+        <img src="{{info.IMG_GROUP+info.IMG_PATH}}">
+        <div class="description">
+            <h3>{{info.IMG_NAME}}</h3>
+            <p>￦{{info.IMG_PRICE}}</p>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

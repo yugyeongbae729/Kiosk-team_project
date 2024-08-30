@@ -1,0 +1,414 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Jalnan', sans-serif;
+    background-color: #f4f4f4;
+    font-size: 20px; /* 기본 폰트 크기 조정 */
+    background-image: url('/hospitalImg/bg2.png'); /* 배경 이미지 추가 */
+    background-size: cover; /* 배경 이미지가 화면을 덮도록 설정 */
+    background-position: center;
+}
+
+@font-face {
+    font-family: 'Jalnan';
+    src: url('/font/JalnanGothicTTF.ttf') format('truetype');
+}
+
+.hospitalContainer {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* White background with transparency */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    /* Padding adjustment */
+    max-width: 90%;
+    /* Maximum width adjustment */
+    width: 600px;
+    min-height: 90vh;
+    /* Minimum height setting */
+    display: flex;
+    flex-direction: column;
+    /* Arrange children vertically */
+    position: relative;
+}
+
+#headLearnBt {
+    position: relative;
+    bottom: 12px;
+    font-family: 'Jalnan';
+    border-radius: 5%;
+    font-size: 18px;
+    /* Button font size adjustment */
+    background-color: #053f79cc;
+    /* Navy blue background */
+    cursor: pointer;
+    padding: 5px 10px;
+    /* Button padding adjustment */
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#headLearnBtRight {
+    position: relative;
+    left: 191px;
+    bottom: 12px;
+    font-family: 'Jalnan';
+    border-radius: 5%;
+    font-size: 18px;
+    /* 버튼 폰트 크기 조정 */
+    background-color: #053f79cc;
+    /* 군청색 배경 */
+    cursor: pointer;
+    padding: 5px 10px;
+    /* 버튼 패딩 조정 */
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-left: 230px;
+}
+
+#headImgBtn {
+    position: relative;
+    top: 3px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+}
+
+#headImg {
+    width: 40px;
+    height: 40px;
+}
+
+.headButton {
+    position: absolute;
+    top: 7px; /* 버튼 위치 조정 */
+    left: 0px; /* 버튼 위치 조정 */
+}
+
+h1 {
+    cursor: pointer;
+    margin-top: 60px;
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 28px; /* 폰트 크기 조정 */
+    border-bottom: 2px solid #333; /* 진한 회색 줄 추가 */
+    padding-bottom: 10px; /* 줄과 텍스트 간의 간격 조정 */
+    margin-bottom: 20px; /* 줄과 아래 요소 간의 간격 조정 */
+    width: 100%; /* 전체 너비 차지 */
+    box-sizing: border-box; /* 패딩과 경계가 전체 너비에 포함되도록 설정 */
+}
+
+.options {
+    display: flex;
+    flex-direction: column; /* 수직 방향으로 배치 */
+    align-items: center;
+    justify-content: flex-start; /* 상단 정렬 */
+    gap: 20px; /* 간격 조정 */
+    flex-grow: 1;
+    width: 100%; /* 전체 너비 차지 */
+}
+
+.option {
+    background-color: #5b98ce2c;
+    border-radius: 8px;
+    padding: 20px;
+    width: 93%; /* 버튼 너비 조정 */
+    /* max-width: 460px; 최대 너비 설정 */
+    height: 665px; /* 높이를 자동으로 조정 */
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column; /* 수직 방향으로 배치 */
+    align-items: center; /* 중앙 정렬 */
+    overflow: hidden;
+}
+
+.inputSection {
+    width: 100%; /* 입력 섹션 너비 조정 */
+}
+
+.radioGroup {
+    display: flex;
+    justify-content: space-around; /* 좌우 정렬 */
+    align-items: center; /* 중앙 정렬 */
+    margin-bottom: 20px; /* 아래쪽 여백 추가 */
+    font-size: 25px;
+}
+
+.keypad {
+    display: flex;
+    flex-direction: column; /* 수직 방향으로 배치 */
+    align-items: center; /* 중앙 정렬 */
+}
+
+/* 빈 버튼 스타일 */
+.emptyButton {
+    visibility: hidden; /* 버튼을 숨김 */
+    width: 60px; /* 버튼 너비 설정 (기존 버튼과 동일) */
+    height: 60px; /* 버튼 높이 설정 (기존 버튼과 동일) */
+    border: none;
+    background-color: transparent; /* 배경색 투명 */
+}
+
+/* 키패드 버튼 스타일 */
+.keypad button {
+    width: 150px; /* 버튼 너비 설정 */
+    height: 60px; /* 버튼 높이 설정 */
+    font-size: 26px; /* 버튼 텍스트 폰트 크기 설정 */
+    padding: 10px; /* 버튼 패딩 설정 */
+    border: none;
+    background-color: #f1f1f1; /* 버튼 배경색 설정 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 버튼의 그림자 설정 */
+    cursor: pointer; /* 버튼 클릭 시 커서 모양 설정 */
+    transition: background-color 0.3s ease, transform 0.1s ease; /* 버튼 상태 변화 시 효과 설정 */
+}
+
+/* 버튼 호버 상태 */
+.keypad button:hover {
+    background-color: #e0e0e0; /* 버튼 호버 시 배경색 변경 */
+}
+
+/* 버튼 클릭 상태 */
+.keypad button:active {
+    transform: translateY(2px); /* 버튼 클릭 시 살짝 눌리는 효과 */
+}
+
+/* 버튼 간의 간격 조정 */
+.keyRow {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* 버튼 간의 간격 조정 */
+    margin: 10px 0; /* 버튼 상하 여백 조정 */
+}
+
+.submitBtn {
+    font-family: 'Jalnan';
+    background-color: #053f79cc; /* 버튼 배경색 */
+    color: white; /* 버튼 텍스트 색상 */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px; /* 버튼 패딩 */
+    cursor: pointer;
+    font-size: 22px;
+}
+.submitBtn:hover {
+    background-color: #043a6a; /* 버튼 hover 상태 색상 */
+}
+
+#headLearnBt {
+    font-family: 'Jalnan';
+    border-radius: 5%;
+    font-size: 18px; /* 버튼 폰트 크기 조정 */
+    background-color: #053f79cc; /* 군청색 배경 */
+    cursor: pointer;
+    padding: 5px 10px; /* 버튼 패딩 조정 */
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #dae5ef;
+}
+
+button:active {
+    transform: translateY(4px);
+}
+
+@media (max-width: 768px) {
+    .hospital-container {
+        max-width: 90%; /* 모바일 화면에서는 너비를 더 넓게 사용 */
+    }
+}
+
+.inputField {
+    width: 100%; /* 입력 필드의 너비를 전체로 설정 */
+    margin-bottom: 20px; /* 입력 필드와 다음 요소 사이의 간격 조정 */
+}
+
+.inputField input {
+    width: 100%; /* 입력 필드의 너비를 전체로 설정 */
+    padding: 10px; /* 입력 필드의 패딩 설정 */
+    border: 0px solid transparent; /* 기본 테두리를 투명으로 설정 */
+    border-bottom: 2px solid #053f79; /* 아래쪽 테두리를 파란색으로 설정 */
+    background-color: #a1adb900; /* 입력 필드의 배경색을 .option 태그의 배경색과 동일하게 설정 */
+    font-size: 32px; /* 입력 필드의 폰트 크기 설정 */
+    box-sizing: border-box; /* 패딩과 테두리가 전체 너비에 포함되도록 설정 */
+    text-align: center; /* 입력 텍스트 중앙 정렬 */
+}
+
+.inputField input::placeholder {
+    color: #053f79; /* 플레이스홀더 텍스트 색상 */
+    opacity: 0.5; /* 플레이스홀더 투명도 */
+}
+
+.footer {
+    margin-top: 30px; /* 위쪽 여백을 조정하여 입력 필드와의 간격을 넓힘 */
+    font-size: 18px; /* 폰트 크기 조정 */
+    text-align: center; /* 중앙 정렬 */
+}
+
+/* 라디오 버튼 스타일 */
+input[type="radio"] {
+    /* 기본 스타일 제거 */
+    -webkit-appearance: none; /* 기본 스타일 제거 (웹킷 브라우저) */
+    -moz-appearance: none; /* 기본 스타일 제거 (파이어폭스) */
+    appearance: none; /* 기본 스타일 제거 (기타 브라우저) */
+    width: 30px; /* 버튼 크기 설정 */
+    height: 30px; /* 버튼 크기 설정 */
+    border: 2px solid #053f79; /* 테두리 설정 */
+    border-radius: 50%; /* 둥근 모서리 설정 */
+    outline: none; /* 포커스 시 아웃라인 제거 */
+    cursor: pointer; /* 커서 모양 설정 */
+    margin-right: 10px; /* 오른쪽 여백 설정 */
+    vertical-align: middle; /* 텍스트와 수직으로 정렬 */
+}
+
+input[type="radio"]:checked {
+    background-color: #053f79; /* 선택된 상태의 배경색 설정 */
+}
+
+label {
+    font-size: 20px; /* 라벨 폰트 크기 설정 */
+    color: #333; /* 라벨 텍스트 색상 설정 */
+    cursor: pointer; /* 라벨 클릭 시 커서 모양 설정 */
+    vertical-align: middle; /* 텍스트와 수직으로 정렬 */
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none; /* 기본 스타일 제거 (웹킷 브라우저) */
+    -moz-appearance: none; /* 기본 스타일 제거 (파이어폭스) */
+    appearance: none; /* 기본 스타일 제거 (기타 브라우저) */
+    width: 30px; /* 버튼 크기 설정 */
+    height: 30px; /* 버튼 크기 설정 */
+    border: 2px solid #053f79; /* 테두리 설정 */
+    border-radius: 50%; /* 둥근 모서리 설정 */
+    outline: none; /* 포커스 시 아웃라인 제거 */
+    cursor: pointer; /* 커서 모양 설정 */
+    margin-right: 10px; /* 오른쪽 여백 설정 */
+    vertical-align: middle; /* 텍스트와 수직으로 정렬 */
+}
+input[type="checkbox"]:checked {
+    background-color: #053f79; /* 선택된 상태의 배경색 설정 */
+}
+
+label {
+    font-size: 20px; /* 라벨 폰트 크기 설정 */
+    color: #333; /* 라벨 텍스트 색상 설정 */
+    cursor: pointer; /* 라벨 클릭 시 커서 모양 설정 */
+    vertical-align: middle; /* 텍스트와 수직으로 정렬 */
+}
+
+.agreement {
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    margin-bottom: 20px; /* 아래쪽 여백 추가 */
+    font-size: 18px; /* 폰트 크기 조정 */
+}
+
+.agreement input[type="checkbox"] {
+    margin-right: 10px; /* 오른쪽 여백 추가 */
+    width: 30px; /* 체크박스 너비 설정 */
+    height: 30px; /* 체크박스 높이 설정 */
+}
+
+.captionContainer {
+    font-size: 30px;
+    position: absolute;
+    left: 90px;
+    display: flex;
+    top: 370px;
+    width: 100%;
+    margin-top: auto;
+    padding: 20px 0;
+}
+
+.captionBox {
+    border: 2px solid #1f5fbf;
+    border-radius: 8px;
+    padding : 50px 20px 50px 20px;
+    width: fit-content;
+    position: relative;
+    background-color: #ffffff;
+}
+
+.captionBox::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    bottom: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    border: 2px solid #1f5fbf;
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+.buttonText {
+    color: #1f5fbf;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.closeBtn {
+    margin-top: 15px;
+    font-family: 'Jalnan';
+    background-color: #053f79cc; /* 버튼 배경색 */
+    color: white; /* 버튼 텍스트 색상 */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px; /* 버튼 패딩 */
+    cursor: pointer;
+    font-size: 22px;
+}
+
+/* 키패드 강조 */
+.keypad button[data-highlight="true"] {
+    background-color: #ffd700; /* 강조 색상 */
+}
+
+.keypad button[data-highlight="true"]:hover {
+    background-color: #ffcc00; /* 호버 시 강조 색상 */
+}
+
+.keypad button[data-highlight="true"]:active {
+    background-color: #ffbf00; /* 클릭 시 강조 색상 */
+    transform: translateY(2px); /* 클릭 시 살짝 눌리는 효과 */
+}
+
+.highlight-red-border {
+    border: 6px solid #ff0000; /* 빨간색 테두리 */
+    animation: redBorderAnimation 1.5s infinite;
+}
+
+@keyframes redBorderAnimation {
+    0%, 100% {
+        border-color: #ff0000;
+        transform: scale(1);
+    }
+    50% {
+        border-color: #ff5555;
+        transform: scale(1.1); /* 크기를 살짝 키움 */
+    }
+}
+
+#oneGif {
+    position: absolute;
+    z-index: 1000;
+    left: 1px;
+    top: 500px;
+    width: 6vh;
+    height: 10vh;
+}

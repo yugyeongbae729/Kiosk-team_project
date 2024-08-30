@@ -1,0 +1,198 @@
+@font-face {
+    font-family: 'Freesentation-9Black';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+}
+
+/* 모든 요소에 폰트 적용 */
+* {
+    font-family: 'Freesentation-9Black', sans-serif;
+    font-weight: 900;
+}
+
+/* 기본 폰트 사이즈 설정 */
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    /* 열 방향으로 정렬 */
+    justify-content: center;
+    /* 수직 중앙 정렬 */
+    align-items: center;
+    /* 수평 중앙 정렬 */
+    background-color: #f0f0f0;
+    font-size: 20px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f8fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    border: 15px solid white;
+    width: 840px;
+    /* 100vh * (9/16) */
+    height: 1200px;
+    /* 9:16 비율을 위한 예시 너비 */
+    background-color: #aa6fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    padding: 60px 20px;
+    /* 상단과 하단 패딩을 늘려 중앙으로 이동 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    position: relative;
+    margin-bottom: 50px;
+    /* background-color: #b4a8ff; */
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    /* 곡선의 위치 조정 */
+    left: 0;
+    width: 100%;
+    height: 40px;
+    /* 곡선의 높이 조정 */
+    /* background-color: #b4a8ff; */
+    border-radius: 0 0 50% 50%;
+    /* 곡선 효과를 위한 border-radius */
+    border-bottom-style: solid ;
+    border-bottom-color: #ffffff;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-img-wrapper {
+    background-color: white;
+    border-radius: 50%;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    height: 250px;
+    border: 3px solid black; /* 두께 5px의 검은색 테두리 추가 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 그림자 추가로 입체감 부여 */
+}
+
+.profile-img-wrapper img {
+    border-radius: 10%; /* 이미지 자체도 둥글게 */
+    width: 90%;
+    height: 90%;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.profile-info {
+    margin-top: 15px;
+    text-align: center;
+    margin-bottom: -50px;
+}
+
+.profile-info .name {
+    padding: 7px;
+    font-size: 27px;
+    /* font-weight: bold; */
+    margin-bottom: 5px;
+    /* 이름과 환영 메시지 사이의 간격 추가 */
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+}
+
+.profile-info #nameTag {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 25px;
+    letter-spacing: 2px;
+    color: yellow;
+    text-shadow: 2px 2px 7px rgba(0, 0, 0, 1);
+    animation: blink 2s infinite; /* 깜빡이는 애니메이션 적용 */
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    margin-top: 0px;
+    justify-content: center;
+    height: 100%; /* 컨테이너 높이를 꽉 채우도록 설정 */
+    padding: 15px 0; /* 상하 간격 조정을 위해 패딩 추가 */
+    box-sizing: border-box;
+}
+
+.menu #startUpdateBtn,
+.menu #startNoteBtn, 
+.menu #LogoutBtn {
+    background-color: #ffffff;
+    color: black;
+    width: calc(70% - 80px); /* 보라색 배경을 다 채우기 위해 패딩을 제외한 너비 */
+    height: 30%; /* 보라색 배경을 다 채우기 위한 높이 */
+    border-radius: 15px;
+    text-decoration: none;
+    font-size: 1.9em;
+    /* transition: background-color 0.3s ease, transform 0.3s ease; */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 20px; /* 상단과 하단 여백을 15px로, 좌우 여백을 20px로 설정 */
+    box-sizing: border-box; /* 패딩과 보더를 너비에 포함 */
+    letter-spacing: 3px;
+}
+
+.menu #startUpdateBtn img,
+.menu #startNoteBtn img,
+.menu #LogoutBtn img{
+    width: 60px;
+    height: 50px;
+    margin-right: 30px; 
+    
+}
+
+.menu #startUpdateBtn:hover,
+.menu #startNoteBtn:hover,
+.menu #LogoutBtn:hover  {
+    transform: scale(1.05);
+}
+
+.menu #deleteBtn {
+    margin-top: 10px;
+    letter-spacing: 3px;
+}
+
+.menu #deleteBtn:hover {
+    transform: scale(1.05);
+}
+
+/* 깜빡이는 애니메이션 */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1; /* 완전히 보이기 */
+    }
+    50% {
+        opacity: 0; /* 투명하게 만들기 */
+    }
+}

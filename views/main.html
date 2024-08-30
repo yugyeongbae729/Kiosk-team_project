@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Basic/main.css">
+    <title>mainPage</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="/pic/Group 22.png" alt="로고 이미지">
+            <div class="title">
+                <p id="titleText">키오스크 실습 교육 플랫폼</p>
+            </div>
+        </div>
+        <div class="games">
+            <div class="game">
+                <img src="pic/kiosk.png" id="kiosk">
+                <div class="game-title" id="kioskTitle">키오스크 <br>실습 교육</div>
+                <button class="game-button" id="startStdBtn">시작하기</button>
+            </div>
+            <div class="game">
+                <img src="pic/game.png" alt="game">
+                <div class="game-title" id="wordGameTitle">낱말 학습 <br> 게임</div>
+                <button class="game-button" id="startGameBtn">시작하기</button>
+            </div>
+
+            <div class="game" id="loginGame">
+                <img src="pic/login1.png" alt="#">
+                <div class="game-title" id="loginTitle">로그인/<br>회원가입</div>
+                <button class="game-button" id="startLoginBtn">시작하기</button>
+            </div>
+
+            <div class="game">
+                <img src="pic/question1.png" class="question">
+                <div class="game-title1" id="helpTitle">도움말</div>
+                <button class="game-button1" id="startHelpBtn">시작하기</button>
+            </div>
+        </div>
+        <div class="footer">
+            <p id="footerText">© 일단 이거 세번만 해볼까요?</p>
+            <div id="translateButton">Translate to English</div>
+        </div>
+    </div>
+
+    <!-- 이전 학습 내역 확인 모달창 -->
+    <div id="learning-note-modal" class="modal">
+        <div class="modal-content">
+            <p>이전 학습 내역이 있습니다. 학습노트를 확인하시겠습니까?</p>
+            <button id="view-learning-note">예</button>
+            <button id="ignore-learning-note">아니오</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            axios.get('/user/session-status')
+                .then(response => {
+                    if (response.data.loggedIn) {
+                        // 로그인된 상태일 때 처리
+                        document.getElementById('loginTitle').innerHTML = '마이페이지';
+                        document.getElementById('loginTitle').classList.add('my-page-title');
+                        const startLoginBtn = document.getElementById('startLoginBtn');
+                        startLoginBtn.innerText = '시작하기';
+                        startLoginBtn.classList.add('my-page-button');
+                        startLoginBtn.addEventListener('click', function () {
+                            location.href = '/myPage';
+                        });
+
+                        // 학습 진도 확인
+                        axios.get('/learningNote/get-user-notes')
+                            .then(progressResponse => {
+                                if (progressResponse.data.success && progressResponse.data.data.length > 0) {
+                                    const modalShown = localStorage.getItem('modalShown');
+
+                                    if (!modalShown) { // 모달이 아직 표시되지 않았다면
+                                        const modal = document.getElementById('learning-note-modal');
+                                        modal.style.display = 'flex'; // 모달을 보이게 설정
+
+                                        // modalShown 값을 생성
+                                        localStorage.setItem('modalShown', 'true');
+
+                                        document.getElementById('view-learning-note').addEventListener('click', () => {
+                                            location.href = '/learningNote';
+                                        });
+
+                                        document.getElementById('ignore-learning-note').addEventListener('click', () => {
+                                            modal.style.display = 'none';
+                                        });
+                                    }
+                                }
+                            })
+                            .catch(error => {
+                                console.error('학습 진도 확인 중 오류 발생:', error);
+                            });
+
+                    } else {
+                        // 로그인되지 않은 상태일 때 처리
+                        const startLoginBtn = document.getElementById('startLoginBtn');
+                        startLoginBtn.addEventListener('click', function () {
+                            location.href = '/login';
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('세션 상태 확인 중 오류 발생:', error);
+                });
+        });
+    </script>
+</body>
+
+</html>

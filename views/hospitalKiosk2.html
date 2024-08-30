@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>심화 교육 안내</title>
+
+    <title>Document</title>
+    <link rel="stylesheet" href="/HosDeepKio/hospitalKiosk2.css">
+</head>
+<body>
+    <div class="hospital-container">
+        <header>
+            <div class="head-button">
+                <button onclick="redirectToHospitalKiosk()" id="head_learn_bt">◀ 이전으로</button>
+                <button id="headLearnBtRight">처음으로 ▶</button>
+                <button id="headImgBtn"><img src="/pic/학습저장별.png" alt="" id="headImg"></button>
+            </div>
+            <h1 id="hTitle">손주들</h1>
+            <h2>심화 교육</h2>
+        </header>
+        <div class="options">
+            <div class="option">
+                <div class="option-top"></div>
+                <div class="option-bottom"></div>
+                <p>교육 안내</p>
+                <br/>
+                <h3>병원에서 진료 접수와 진료비 수납을 위해</h3>
+                <h3>아래와 같이 미션을 진행해주세요</h3>
+                
+            <div class="option_list">
+                <h3>①<span class="highlight">주민등록번호</span>로 접수하기</h3>
+                <h3>②접수 확인 및 <span class="highlight">1진료실</span> 선택</h3>
+                <h3>③<span class="highlight">접수 정보 확인</span> 후 접수 완료</h3>
+                <h3>④<span class="highlight">휴대폰 번호</span>로 진료이력 조회</h3>
+                <h3>⑤진료비 확인 후 <span class="highlight">결제하기</span></h3>
+                <button id="learn2_bt" onclick="goToHospitalKiosk3()">학습하기</button>
+            </div>
+            </div>
+        </div>
+        <footer>
+            <p>디지털 소외계층을 위한 키오스크 교육 플랫폼</p>
+        </footer>
+    </div>
+
+    <script>
+        function redirectToHospitalKiosk() {
+            window.location.href = 'hospitalKiosk.html'
+        }
+
+        function goToHospitalKiosk3() {
+            window.location.href = 'hospitalKiosk3.html'
+        }
+
+        const headLearnBtRight = document.getElementById('headLearnBtRight')
+        headLearnBtRight.addEventListener('click', ()=>{
+            location.href='/'
+        })
+
+        const hTitle = document.getElementById('hTitle')
+        hTitle.addEventListener('click', ()=>{
+            location.href='/hospital'
+        })
+
+        const infoPageNum = 10;
+            const infoPageName = '심화 교육 안내';
+            document.getElementById('headImgBtn').addEventListener('click', () => {
+                fetch('/kiosk/save-page-info', { // 수정된 경로
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include', // 세션 쿠키를 서버에 포함
+                    body: JSON.stringify({ infoPageNum: infoPageNum, infoPageName:infoPageName }) // 페이지 번호, 제목 포함해 전송
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('페이지 정보가 저장되었습니다.');
+                    } else {
+                        alert(data.message); // 로그인하지 않은 경우의 메시지
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            });
+    </script>
+
+</body>
+</html>

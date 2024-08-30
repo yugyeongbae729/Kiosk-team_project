@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>접수하기(기초) 4</title>
+    <link rel="stylesheet" href="/HosBasicKio/hospitalKioskB4.css">
+</head>
+
+<body>
+    <audio src="/voice/hpComplete.mp3" autoplay>아무런 오디오도 없습니다.</audio>
+    <div class="hospitalContainer">
+        <header>
+            <div class="headButton">
+                <button id="headLearnBt">◀ 이전으로</button>
+                <button id="headLearnBtRight">처음으로 ▶</button>
+                <button id="headImgBtn"><img src="/pic/학습저장별.png" alt="" id="headImg"></button>
+            </div>
+            <h1 id="hTitle">손주병원</h1>
+        </header>
+        <div class="options">
+            <div class="option">
+                <img src="/123GIF/1.gif" alt="1gif" id="oneGif">
+                <img src="/hospitalImg/learn_rebg.png" alt="" class="roomIcon">
+                <h2>아래 접수 정보를 확인해주세요</h2>
+
+                <!-- 테이블 추가 -->
+                <table class="infoTable">
+                    <thead>
+                        <tr>
+                            <th>항목</th>
+                            <th>정보</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>환자 이름</td>
+                            <td>강*찬</td>
+                        </tr>
+                        <tr>
+                            <td>생년월일</td>
+                            <td>1953년</td>
+                        </tr>
+                        <tr>
+                            <td>성별</td>
+                            <td>남자</td>
+                        </tr>
+                        <tr>
+                            <td>진료실</td>
+                            <td>1진료실 (선영* 원장)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 버튼 추가 -->
+                <button id="completeBtn">접수 완료</button>
+            </div>
+            <div class="captionContainer">
+                <div class="captionBox">
+                    접수된 정보를 확인하신 후<br>
+                    <span id="buttonText">[접수완료]</span>버튼을 눌러<br>
+                    접수를 완료해주세요.
+                </div>
+            </div>
+        </div>
+        <footer>
+        </footer>
+    </div>
+    <script>
+        const headLearnBt = document.getElementById('headLearnBt')
+        headLearnBt.addEventListener('click', () => {
+            location.href = '/hospitalB3'
+        })
+
+        const completeBtn = document.getElementById('completeBtn')
+        completeBtn.addEventListener('click', () => {
+            location.href = '/hospitalB5'
+        })
+
+        const headLearnBtRight = document.getElementById('headLearnBtRight')
+        headLearnBtRight.addEventListener('click', () => {
+            location.href = '/'
+        })
+
+        const hTitle = document.getElementById('hTitle')
+        hTitle.addEventListener('click', () => {
+            location.href = '/hospital'
+        })
+
+        const infoPageNum = 4;
+        const infoPageName = '접수하기(기초) 4';
+        document.getElementById('headImgBtn').addEventListener('click', () => {
+            fetch('/kiosk/save-page-info', { // 수정된 경로
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include', // 세션 쿠키를 서버에 포함
+                body: JSON.stringify({ infoPageNum: infoPageNum, infoPageName: infoPageName }) // 페이지 번호, 제목 포함해 전송
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('페이지 정보가 저장되었습니다.');
+                    } else {
+                        alert(data.message); // 로그인하지 않은 경우의 메시지
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+    </script>
+</body>
+
+</html>

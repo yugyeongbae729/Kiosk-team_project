@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원탈퇴</title>
+    <link rel="stylesheet" href="/Basic/delete.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>회원탈퇴</h1>
+        <form id="deleteForm" action="user/delete" method="post">
+            <div class="formGroup">
+                <label for="nick">별명</label>
+                <input type="text" name="nick" id="nick" placeholder="별명">
+            </div>
+            <div class="formGroup">
+                <label for="pw">비밀번호</label>
+                <input type="password" name="pw" id="pw" placeholder="비밀번호">
+            </div>
+            <input type="submit" value="회원탈퇴" class="deleteBtn">
+        </form>
+    </div>
+    <script>
+        document.getElementById('deleteForm').addEventListener('submit', function(event) {
+            const confirmation = confirm("회원정보가 삭제됩니다. 정말로 탈퇴하시겠습니까?");
+            if (!confirmation) {
+                // 사용자가 "아니오"를 클릭한 경우, 기본 제출 동작을 막음
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+
+</html>

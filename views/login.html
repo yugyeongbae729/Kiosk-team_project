@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Basic/login.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="images">
+            <img src="/pic/Group 21.png" class="grandfather">
+            <img src="/pic/Group 20.png" class="grandmother">
+        </div>
+        <form id="loginFrm">
+            <label for="nick"><b>별명</b></label>
+            <input type="text" id="nick" name="nick" required>
+            <label for="pw"><b>비밀번호</b></label>
+            <input type="password" id="pw" name="pw" required>
+            <input type="submit" value="로그인">
+        </form>
+        <a href="/join"><b>처음이라면 여기 눌러주세요!</b></a>
+    </div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <img src="/pic/good.png" class="good">
+            <div class="modal-box">
+                <p><b>환영합니다!</b></p>
+                <div class="button-container">
+                    <button onclick="location.href='/mypage'"><b>마이페이지로 이동</b></button>
+                    <button onclick="location.href='/'"><b></b>메인페이지로 이동</b></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/login.js"></script>
+</body>
+
+</html>

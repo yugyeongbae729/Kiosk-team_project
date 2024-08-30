@@ -1,0 +1,298 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #b4a8ff;
+    /* 연보라색 배경 */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    /* 귀여운 폰트 */
+}
+
+canvas {
+    border: 15px ridge #f0ec0a;
+    /* 연보라색 테두리 */
+    border-radius: 10px;
+    /* 둥근 모서리 */
+    cursor: crosshair;
+    background-color: #fff;
+    /* 캔버스 배경색 */
+}
+
+#resetBtn,
+#mainBtn,
+#prevBtn,
+#nextBtn {
+    height: 50px;
+    width: 150px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: red;
+    /* 연보라색 버튼 */
+    color: #fff;
+    cursor: pointer;
+    margin: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* 버튼 그림자 */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#resetBtn:hover,
+#mainBtn:hover,
+#prevBtn:hover,
+#nextBtn:hover {
+    background-color: #923b7f;
+    /* 다크 연보라색 */
+}
+
+#resetBtn:active,
+#mainBtn:active,
+#prevBtn:active,
+#nextBtn:active {
+    transform: scale(0.95);
+    /* 클릭 시 버튼 축소 효과 */
+}
+
+.gameModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* 검은색 배경 투명도 */
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContent {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #d4a0d1;
+    /* 연보라색 테두리 */
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* 모달 그림자 */
+}
+
+.gameModalClose {
+    color: #ff6d33;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.gameModalClose:hover {
+    color: #ff6d33;
+    /* 다크 연보라색 */
+}
+
+.controls {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#modalGameImage {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    /* 이미지 둥근 모서리 */
+}
+
+h3,
+h5 {
+    color: #000000;
+    /* 연보라색 텍스트 */
+    text-align: center;
+}
+
+/* 여기 하는 중 */
+/* 모달의 기본 스타일 */
+.gameModal {
+    display: none;
+    /* 기본적으로 숨김 */
+    position: fixed;
+    /* 고정 위치 */
+    z-index: 1;
+    /* 위에 표시 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* 전체 너비 */
+    height: 100%;
+    /* 전체 높이 */
+    overflow: auto;
+    /* 필요한 경우 스크롤 활성화 */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* 반투명 검정 배경 */
+}
+
+.modalContent {
+    background-color: #FFD700;
+    /* 노란색 배경 */
+    margin: 15% auto;
+    /* 위에서 15% 떨어져서 중앙 정렬 */
+    padding: 20px;
+    border-radius: 20px;
+    /* 둥근 모서리 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    /* 그림자 추가 */
+    width: 450px;
+    /* 너비 설정 */
+    /* height: 400px; */
+    max-width: 500px;
+    /* 최대 너비 */
+    text-align: center;
+    /* 텍스트 중앙 정렬 */
+}
+
+/* 닫기 버튼 스타일 */
+.gameModalClose {
+    color: #050505;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.gameModalClose:hover,
+.gameModalClose:focus {
+    color: black;
+    text-decoration: none;
+}
+
+/* 컨트롤 버튼 스타일 */
+.controls button {
+    background-color: #ffffff;
+    /* 흰색 배경 */
+    border: none;
+    color: #333;
+    /* 어두운 텍스트 색상 */
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 15px;
+    /* 둥근 버튼 */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.controls button:hover {
+    background-color: #ffeb3b;
+    /* 호버 시 약간 어두운 노란색 */
+}
+
+/* 모달 이미지 스타일 */
+#modalGameImage {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    /* 이미지의 둥근 모서리 */
+    margin-bottom: 15px;
+}
+
+.modalGameText {
+    font-family: 'Freesentation-9Black', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    margin: 15px 0;
+    color: #000000;
+    /* 대비를 위한 어두운 텍스트 */
+}
+
+.startModal {
+    display: flex;
+    /* 기본적으로 숨김 상태 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* 반투명 검정 배경 */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* 모달 콘텐츠 스타일 */
+.startcontent {
+    font-family: 'Freesentation-9Black', sans-serif;
+    font-weight: 900;
+    font-size: 4em;
+    background: #ffe600;
+    border-radius: 15px;
+    padding: 20px;
+
+    width: 500px;
+    height: 320px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.startimg {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: -130px;
+    /* 이미지 상단 위치 조정 */
+    left: 55%;
+    transform: translateX(-50%);
+}
+
+#startGameBtn {
+    background-color: red;
+    color: white;
+    font-size: 1em;
+    /* padding: 10px 20px; */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    margin-top: 60px;
+
+}
+
+#starttext {
+    font-size: 0.3em;
+    /* 글씨 작게 설정 */
+    margin-top: -40px;
+    color: #000;
+}
+
+#starttext1 {
+    margin-top: 30px;
+    line-height: 30px;
+}
+
+.innerModal {
+    background-color: #fff;
+    /* 흰색 배경 */
+
+    border-radius: 10px;
+    /* 둥근 모서리 */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    /* 가벼운 그림자 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 180px;
+    text-align: center;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수납하기(심화) 3</title>
+    <link rel="stylesheet" href="/HosDeepKio/hpKiosksoonap3.css">
+</head>
+
+<body>
+    <div class="hospital-container">
+        <header>
+            <div class="head-button">
+                <button onclick="redirectTohpKiosksoonap2()" id="head_learn_bt">◀ 이전으로</button>
+                <button id="headLearnBtRight">처음으로 ▶</button>
+                <button id="headImgBtn"><img src="/pic/학습저장별.png" alt="" id="headImg"></button>
+            </div>
+            <h1 id="hTitle">손주병원</h1>
+        </header>
+        <div class="options">
+            <div class="option">
+                <h2>결제 완료</h2>
+                <img src="/hospitalImg/checkgreen.png" alt="">
+                <p class="modalp1">이제 카드를 꺼내셔도 됩니다</p>
+                <p class="modalp2">영수증을 출력할까요?</p>
+                <div class="button-container">
+                    <button class="yon-btn no-btn" onclick="showClearModal()">아니오</button>
+                    <button class="yon-btn yes-btn" onclick="showClearModal()">예</button>
+                </div>
+            </div>
+        </div>
+        <footer>
+        </footer>
+    </div>
+
+    <!-- 모달 추가 -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p class="modalp3">수고하셨습니다. 병원 키오스크</p>
+            <p class="modalp3">학습하기를 완료하였습니다</p>
+            <p class="modalp3">다시 한 번 학습하시려면</p>
+            <p class="modalp3"><span class="reHighlight">[다시하기]</span>를 클릭하세요</p>
+            <br />
+            <p class="modalp4">연습을 완전히 종료하시려면</p>
+            <p class="modalp4"><span class="reHighlight">[처음으로]</span>를 클릭하세요</p>
+            <div class="modalb-container">
+                <button class="modalb-btn rep-btn" onclick="redirectKioskLearn()">다시하기</button>
+                <button class="modalb-btn fir-btn" onclick="redirectFirstPage()">처음으로</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function redirectTohpKiosksoonap2() {
+            window.location.href = 'hospitalKioskSn2.html'
+        }
+
+        function showClearModal() {
+            document.getElementById('paymentModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById('paymentModal')) {
+                closeModal();
+            }
+        }
+
+        function redirectKioskLearn() {
+            window.location.href = 'hospitalKiosk3.html'
+        }
+
+        function redirectFirstPage() {
+            window.location.href = 'hospitalKiosk.html'
+        }
+
+        const headLearnBtRight = document.getElementById('headLearnBtRight')
+        headLearnBtRight.addEventListener('click', () => {
+            location.href = '/'
+        })
+
+        const hTitle = document.getElementById('hTitle')
+        hTitle.addEventListener('click', () => {
+            location.href = '/hospital'
+        })
+        
+        const infoPageNum = 17;
+            const infoPageName = '수납하기(심화) 3';
+            document.getElementById('headImgBtn').addEventListener('click', () => {
+                fetch('/kiosk/save-page-info', { // 수정된 경로
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include', // 세션 쿠키를 서버에 포함
+                    body: JSON.stringify({ infoPageNum: infoPageNum, infoPageName:infoPageName }) // 페이지 번호, 제목 포함해 전송
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('페이지 정보가 저장되었습니다.');
+                    } else {
+                        alert(data.message); // 로그인하지 않은 경우의 메시지
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            });
+            console.log('Data received from client:', req.body);
+            console.log('Query executed successfully:', results);
+    </script>
+</body>
+
+</html>

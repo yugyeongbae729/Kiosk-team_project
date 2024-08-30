@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 학습노트</title>
+    <link rel="stylesheet" href="/Basic/learningNote.css">
+</head>
+<body>
+    <div class="container">
+        <div>
+            <img src="/pic/Group 22.png" alt="">
+            <h1>나의 학습노트</h1>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">
+                <img src="./pic/병원.png" alt="1" width="50" id="img1">
+                <span>병원 학습</span>
+            </div>
+            <div class="gridH">
+                <a href="#" class="gridH-item"></a>
+                <a href="#" class="gridH-item"></a>
+                <a href="#" class="gridH-item"></a>
+                <a href="#" class="gridH-item"></a>
+                <a href="#" class="gridH-item"></a>
+                <a href="#" class="gridH-item"></a>
+                <a href="#" class="gridH-item"></a>
+                <a href="#" class="gridH-item"></a>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <img src="/pic/식당.png" alt="2" width="50" id="img2">
+                <span>음식점 학습</span>
+            </div>
+            <div class="gridM">
+                <a href="#" class="gridM-item"></a>
+                <a href="#" class="gridM-item"></a>
+                <a href="#" class="gridM-item"></a>
+                <a href="#" class="gridM-item"></a>
+                <a href="#" class="gridM-item"></a>
+                <a href="#" class="gridM-item"></a>
+                <a href="#" class="gridM-item"></a>
+                <a href="#" class="gridM-item"></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/learningNote/get-user-notes', {
+                method: 'GET',
+                credentials: 'include'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const gridHItems = document.querySelectorAll('.gridH-item');
+                    const notes = data.data;
+
+                    // 페이지 이름을 URL로 매핑하는 함수
+                    const getPageUrl = (pageName) => {
+                        const pageMapping = {
+                            '접수하기(기초) 1': 'hospitalB1', '접수하기(기초) 2': 'hospitalB2',
+                            '접수하기(기초) 3': 'hospitalB3', '접수하기(기초) 4': 'hospitalB4',
+                            '접수하기(기초) 5': 'hospitalB5', '수납하기(기초) 1': 'hospitalB6',
+                            '수납하기(기초) 2': 'hospitalB7', '수납하기(기초) 3': 'hospitalB8',
+                            '수납하기(기초) 4': 'hospitalB9', '심화 교육 안내': 'hospitalKiosk2.html',
+                            '접수하기(심화) 1': 'hospitalKiosk3.html', '접수하기(심화) 2': 'hospitalKiosk4.html',
+                            '접수하기(심화) 3': 'hospitalKiosk5.html', '접수하기(심화) 4': 'hospitalKiosk6.html',
+                            '수납하기(심화) 1': 'hospitalKioskSn1.html', '수납하기(심화) 2': 'hospitalKioskSn2.html',
+                            '수납하기(심화) 3': 'hospitalKioskSn3.html',
+
+                            // 다른 페이지 이름과 URL 매핑 추가
+                        };
+                        return pageMapping[pageName] || '#'; // 기본값은 '#'
+                    };
+
+                    // Clear all gridH items
+                    gridHItems.forEach(item => item.innerHTML = '');
+
+                    // Add new notes to gridH items
+                    notes.forEach((note, index) => {
+                        if (index < gridHItems.length) {
+                            const a = gridHItems[index];
+                            const pageUrl = getPageUrl(note.INFO_PAGENAME);
+                            a.innerHTML = `${note.INFO_PAGENAME}<br>(${new Date(note.NOTE_DATE).toLocaleDateString()})`;
+                            a.href = pageUrl; // 페이지 링크 추가
+                        }
+                    });
+                } else {
+                    console.error('Error:', data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+        // 학습 내역 확인 모달창
+        const learningNoteModal = document.getElementById('learning-note-modal');
+        const viewLearningNote = document.getElementById('view-learning-note');
+        const ignoreLearningNote = document.getElementById('ignore-learning-note');
+        
+        // 메인 페이지로 이동 후 학습 내역 확인 모달창 띄우기
+        function showLearningNoteModal() {
+            learningNoteModal.style.display = 'block';
+        }
+        
+        // "예" 버튼 클릭
+        viewLearningNote.addEventListener('click', () => {
+            window.location.href = '/learningNote';
+        });
+
+        // "아니오" 버튼 클릭
+        ignoreLearningNote.addEventListener('click', () => {
+            learningNoteModal.style.display = 'none';
+        });
+        checkAndShowLearningNoteModal();
+    });
+    </script>
+</body>
+</html>

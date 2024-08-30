@@ -1,0 +1,165 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Jalnan', sans-serif;
+    background-color: #f4f4f4;
+    font-size: 20px;
+    /* 기본 폰트 크기 조정 */
+    background-image: url('/hospitalImg/bg2.png');
+    /* 배경 이미지 추가 */
+    background-size: cover;
+    /* 배경 이미지가 화면을 덮도록 설정 */
+    background-position: center;
+}
+
+@font-face {
+    font-family: 'Jalnan';
+    src: url('/font/JalnanGothicTTF.ttf') format('truetype');
+}
+
+.hospital-container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* 흰색 배경, 투명도 0.8 */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    /* 패딩 조정 */
+    width: 600px;
+    min-height: 90vh;
+    /* 최소 높이 설정 */
+    display: flex;
+    flex-direction: column;
+    /* 세로 방향으로 배치 */
+    position: relative;
+}
+
+.head-button {
+    position: absolute;
+    top: 10px;
+    /* 버튼 위치 조정 */
+    left: 0px;
+}
+
+.headText {
+    margin-top: 30px;
+}
+
+header h2 {
+    font-size: 30px;
+    /* 서브 타이틀 폰트 크기 조정 */
+    margin: 10px 0;
+}
+
+header h3 {
+    font-size: 25px;
+    /* 설명 텍스트 폰트 크기 조정 */
+    /* margin-top: 5px; */
+    margin-bottom: 70px;
+    color: rgb(126, 106, 255);
+
+    text-shadow: 3px 3px 5px rgba(255, 253, 253, 0.3);
+    /* 텍스트 음영 추가 */
+}
+
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    /* flex 아이템들이 새로운 행으로 넘어가게 설정 */
+    justify-content: center;
+    gap: 40px;
+    /* 요소 사이의 간격 감소 */
+    margin-bottom: 5px;
+    flex-grow: 1;
+    /* 남은 공간을 차지하게 설정 */
+    align-content: flex-start;
+
+}
+
+.option {
+    background-color: #5b98ce6e;
+    border-radius: 8px;
+    padding: 20px;
+    width: 180px;
+    /* 버튼 너비 조정 */
+    height: 200px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s;
+    margin-top: 40px;
+    /* 요소 간 상단 여백 */
+    display: flex;
+    /* 수직 가운데 정렬을 위해 flex 사용 */
+    flex-direction: column;
+    /* align-content: flex-start; */
+    align-items: center;
+    justify-content: center;
+}
+
+.option:hover {
+    transform: scale(1.1);
+}
+
+.option img {
+    width: 60px;
+    /* 아이콘 크기 조정 */
+    height: 60px;
+}
+
+.option p {
+    margin-top: 30px;
+    font-weight: bold;
+    color: #333;
+    font-size: 34px;
+    /* 버튼 텍스트 폰트 크기 조정 */
+}
+
+footer {
+    font-size: 16px;
+    /* 푸터 폰트 크기 조정 */
+    color: #777;
+    padding: 10px 0;
+    /* 상하 패딩 추가 */
+    text-align: center;
+    /* 중앙 정렬 */
+    margin-top: auto;
+    /* 남은 공간을 차지하도록 설정 */
+}
+
+#head_learn_bt {
+    font-family: 'Jalnan';
+    border-radius: 5%;
+    font-size: 18px;
+    /* 버튼 폰트 크기 조정 */
+    background-color: #053f79cc;
+    /* 군청색 배경 */
+    cursor: pointer;
+    padding: 5px 10px;
+    /* 버튼 패딩 조정 */
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #dae5ef;
+}
+
+button:active {
+    transform: translateY(4px);
+}
+
+@media (max-width: 768px) {
+    .hospital-container {
+        max-width: 90%;
+        /* 모바일 화면에서는 너비를 더 넓게 사용 */
+    }
+}
